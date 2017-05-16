@@ -1,5 +1,5 @@
 from util.list import *
-from util.performance import test_sort
+#from util.performance import test_sort
 
 
 def insertion_sort(l):
@@ -23,10 +23,8 @@ def insertion_sort_advance(l):
 				cur = j - 1
 		l[cur] = copy
 
-test_list = generate_random_list(5000, 0, 10)
-test_list2 = generate_nearly_ordered_list(5000, 2)
-test_sort('test1', insertion_sort_advance, test_list)
-test_sort('test2', insertion_sort_advance, test_list2)
-
-#print_list(test_list)
-#test_sort('insertion_sort', insertion_sort, test_list)
+if __name__ == '__main__':
+	test_list = generate_random_list(5000, 0, 10)
+	test_list2 = generate_nearly_ordered_list(5000, 2)
+	test_sort('test1', insertion_sort_advance, test_list)
+	test_sort('test2', insertion_sort_advance, test_list2)

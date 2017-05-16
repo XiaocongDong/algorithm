@@ -1,7 +1,7 @@
 # simple selection sort
 
 from util.list import *
-from util.performance import test_sort
+#from util.performance import test_sort
 
 def selection_sort(l):
 	# outer loop 
@@ -14,6 +14,7 @@ def selection_sort(l):
 
 		swap(l, i, min_index)
 
-test_list = generate_random_list(1000, 1, 10000)
+if __name__ == '__main__':
+	test_list = generate_random_list(1000, 1, 10000)
 
-test_sort('selection sort', selection_sort, test_list)
+	test_sort('selection sort', selection_sort, test_list)

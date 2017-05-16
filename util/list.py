@@ -1,4 +1,5 @@
 import random
+import copy
 
 def swap(l, i1, i2):
 	l[i1], l[i2] = l[i2], l[i1]
@@ -32,3 +33,6 @@ def is_sorted(l):
 def print_list(l):
 	for e in l:
 		print(e, ' ')
+
+def copy_list(l):
+	return copy.deepcopy(l)
