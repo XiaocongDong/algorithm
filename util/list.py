@@ -36,3 +36,7 @@ def print_list(l):
 
 def copy_list(l):
 	return copy.deepcopy(l)
+
+def copy_from_list_to_list(fl, tl,start, end):
+	for x in range(start, end + 1):
+		tl[x] = fl[x]
