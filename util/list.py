@@ -2,6 +2,9 @@ import random
 import copy
 
 def swap(l, i1, i2):
+	if i1 == i2:
+		return
+		
 	l[i1], l[i2] = l[i2], l[i1]
 
 def generate_random_list(n, start, stop):

@@ -79,7 +79,7 @@ def merge_from_bottom_up(l):
 	pass
 
 if __name__ == '__main__':
-	test_list = generate_random_list(50, 1, 10000)
-	_sub_insertion_sort(test_list, 0, 49)
-	#merge_sort(test_list)
+	test_list = generate_random_list(1000000, 1, 10000)
+	#_sub_insertion_sort(test_list, 0, 49)
+	merge_sort(test_list)
 	print_list(test_list)
