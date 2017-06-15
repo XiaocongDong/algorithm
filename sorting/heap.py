@@ -3,8 +3,20 @@ from util.list import *
 
 class MaxHeap:
 
-    def __init__(self):
+    def __init__(self, l):
+        # time complexity
+        # build a heap by inserting each element from list o(nlogn)
+        # build the heap by a list o(n)
         self.list = list([None])
+        # build the heap from a list 
+        if l:
+            for i in l:
+                self.list.append(i)
+            # the index of the last element that is not leaf
+            # is len(l)//2 e.g. 11 -> 5
+            # from the last not leaf element shift down to the first
+            for i in range(len(l)//2, 0, -1):
+                self.shift_down(i)
 
     def size(self):
         return len(self.list)
@@ -40,9 +52,9 @@ class MaxHeap:
     def __str__(self):
         return ', '.join(str(e) for e in self.list[1:])
 
-    def shift_down(self):
-        # shift down from the top
-        i = 1
+    def shift_down(self, index=1):
+        # shift down from index
+        i = index
         length = len(self.list)
         # check if i is the last elememt now
         while 2 * i <= length - 1:
