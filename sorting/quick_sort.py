@@ -99,7 +99,7 @@ def _quick_sort_opt2(l, start, end):
 	p = l[start]
 
 	# when the algorithm is running, we need to
-	# make sure l[start + 1...i) <= v and l(j, end]
+	# make sure l[start + 1...i) <= v and l(j, end] > v
 	i = start + 1 # so the begining, no elements in the first sub list
 	j = end # no elements in the second sub list
 
