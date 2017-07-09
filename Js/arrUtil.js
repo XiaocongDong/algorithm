@@ -47,9 +47,20 @@ const testSort = (func, testArr, print=false) => {
 	print && printArr(copy);
 }
 
+const generateArrWithRange = (start, end, interval = 1) => {
+	let retArr = [];
+
+	for(let i = start; i <= end; i += interval) {
+		retArr.push(i);
+	}
+
+	return retArr;
+}
+
 module.exports = {
 	swap,
 	generateRandomList,
 	printArr,
-	testSort
+	testSort,
+	generateArrWithRange
 }
