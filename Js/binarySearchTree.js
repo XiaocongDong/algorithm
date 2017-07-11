@@ -1,3 +1,5 @@
+const Queue = require('./Queue');
+
 class BST {
 
     constructor() {
@@ -147,6 +149,21 @@ class BST {
         else return this._get(n.left, key);
     }
 
+    // 层序遍历
+    levelOrder() {
+        let nodeQueue = new Queue();
+        nodeQueue.push(this.root);
+
+        while(!nodeQueue.isEmpty()) {
+            let currNode = nodeQueue.pop();
+
+            if(currNode != null) {
+                console.log(currNode.key);
+                currNode.left && nodeQueue.push(currNode.left);
+                currNode.right && nodeQueue.push(currNode.right)
+            }
+        }
+    }
 }
 
 class TreeNode {
@@ -171,5 +188,5 @@ bst.insert(12, 1);
 bst.insert(11, 4);
 bst.insert(1, 10);
 bst.insert(10, 8);
-bst.postOrder();
+bst.levelOrder();
 // console.log(bst.search(10))
