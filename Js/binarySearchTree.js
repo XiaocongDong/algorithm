@@ -67,12 +67,55 @@ class BST {
         return n;
     }
 
+    preOrder() {
+        // 前序遍历
+        this._preOrder(this.root);
+    }
+
+    _preOrder(n) {
+        if(n !== null) {
+            console.log(n.key);
+            this._preOrder(n.left);
+            this._preOrder(n.right);
+        }
+    }
+
+     inOrder() {
+        // 中序遍历
+        // 中序遍历将会按照顺序把树打印出来
+        // 相当于排序，原因就是中间节点的值都要比
+        // 左子树所有节点的值都要大， 比右子树的所有节点的值都要小
+        this._inOrder(this.root);
+     }
+
+     _inOrder(n) {
+        if(n !== null) {
+            this._inOrder(n.left);
+            console.log(n.key);
+            this._inOrder(n.right);
+        }
+     }
+
+     postOrder() {
+        // 后序遍历，应用是释放资源，
+        // 先释放左子树的资源和右子树的资源，然后再释放中间节点的资源
+        this._postOrder(this.root);
+     }
+
+     _postOrder(n) {
+        if(n !== null) {
+            this._postOrder(n.left);
+            this._postOrder(n.right);
+            console.log(n.key);
+        }
+     }
+
     printTree() {
         this.__printTree(this.root);
     }
 
     __printTree(n) {
-        // 前序遍历
+        // 中序遍历
         if (n == null) return;
 
         if(n.left) this.__printTree(n.left);
@@ -128,5 +171,5 @@ bst.insert(12, 1);
 bst.insert(11, 4);
 bst.insert(1, 10);
 bst.insert(10, 8);
-
-console.log(bst.search(10))
+bst.postOrder();
+// console.log(bst.search(10))
