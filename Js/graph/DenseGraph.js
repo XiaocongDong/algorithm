@@ -50,15 +50,51 @@ class DenseGraph {
 
         this.m ++;
     }
+
+    printGraph() {
+        for(let i = 0; i < this.n; i++) {
+            let str = `${ i } : `;
+            let iterator = new DenseGraph.AdjIterator(this, i);
+
+            for(let j = iterator.begin(); !iterator.end(); j = iterator.next()) {
+                str += `${ j } `
+            }
+
+            console.log(str);
+        }
+    }
 }
 
-// 测试
-let denseGraph = new DenseGraph(10, true);
-denseGraph.addEdge(0, 9);
-denseGraph.addEdge(0, 9);
-denseGraph.addEdge(9, 1);
+class AdjIterator {
 
-console.log(denseGraph.hasEdge(0, 9));
-console.log(denseGraph.hasEdge(9, 0));
-console.log(denseGraph.hasEdge(9, 1));
-console.log(denseGraph.E());
+    // 返回稠密图的, 所有v节点的邻节点
+    constructor(denseGraph, v) {
+        this.denseGraph = denseGraph;
+        this.v = v;
+        this.index = -1; // 因为在稠密图中哪个是第一个起点的索引还不知道，所以设为-1
+    }
+
+    begin() {
+        // 返回开始的节点
+        this.index = -1;
+        
+        return this.next();
+    }
+
+    end() {
+        return this.index >= this.denseGraph.graph[this.v].length;
+    }
+
+    next() {
+        for(this.index++; this.index < this.denseGraph.graph[this.v].length; this.index++) {
+            if(this.denseGraph.graph[this.v][this.index]) 
+                return this.index;
+        }
+
+        return -1;
+    }
+}
+
+DenseGraph.AdjIterator = AdjIterator;
+
+module.exports = DenseGraph;

@@ -46,13 +46,56 @@ class SparseGraph {
 
         return false;
     }
+
+    printGraph() {
+        for(let i = 0; i < this.n; i++) {
+            let str = `${ i } : `;
+            let iterator = new SparseGraph.AdjIterator(this, i);
+
+            for(let j = iterator.begin(); !iterator.end(); j = iterator.next()) {
+                str += `${ j } `
+            }
+
+            console.log(str);
+        }
+    }
 }
 
-let sparseGraph = new SparseGraph(10, true);
-sparseGraph.addEdge(0, 9);
-sparseGraph.addEdge(1, 8);
+class AdjIterator {
 
-console.log(sparseGraph.hasEdge(0, 9));
-console.log(sparseGraph.hasEdge(9, 0));
-console.log(sparseGraph.hasEdge(1, 8));
-console.log(sparseGraph.E());
+    // 用于对稀疏图的第v个节点进行遍历，返回所有和稀疏图相邻的点
+    constructor(sparseGraph, v) {
+        this.sparseGraph = sparseGraph;
+        this.v = v;
+        this.index = 0; // index 表示当前的索引
+    }
+
+    begin() {
+        // 开始遍历重置index
+        this.index = 0;
+        if(this.sparseGraph.graph[this.v].length > 0) {
+            return this.sparseGraph.graph[this.v][this.index];
+        }
+
+        // 不存在返回-1
+        return -1;
+    }
+
+    next() {
+        // 返回下一个节点
+        for(this.index++; this.index < this.sparseGraph.graph[this.v].length; this.index++) {
+            return this.sparseGraph.graph[this.v][this.index];
+        }
+
+        return -1;
+    }
+
+    end() {
+        // 返回是否遍历结束
+        return this.index >= this.sparseGraph.graph[this.v].length; 
+    }
+}
+
+SparseGraph.AdjIterator = AdjIterator;
+
+module.exports = SparseGraph;
