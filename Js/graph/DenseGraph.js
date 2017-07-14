@@ -47,14 +47,18 @@ class DenseGraph {
         if(this.directed) {
             this.graph[w][v] = 1;
         }
+
+        this.m ++;
     }
 }
 
 // 测试
 let denseGraph = new DenseGraph(10, true);
 denseGraph.addEdge(0, 9);
+denseGraph.addEdge(0, 9);
 denseGraph.addEdge(9, 1);
 
 console.log(denseGraph.hasEdge(0, 9));
 console.log(denseGraph.hasEdge(9, 0));
 console.log(denseGraph.hasEdge(9, 1));
+console.log(denseGraph.E());
