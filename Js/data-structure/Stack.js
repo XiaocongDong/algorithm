@@ -16,3 +16,5 @@ class Stack {
         return this.stack.length === 0;
     }
 }
+
+module.exports = Stack;

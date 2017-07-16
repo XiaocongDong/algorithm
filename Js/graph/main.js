@@ -2,6 +2,7 @@ const DenseGraph = require("./DenseGraph");
 const SparseGraph = require("./SparseGraph");
 const { generateEdges, readGraph } = require("./util");
 const Component = require("./Component");
+const Path = require("./Path");
 
 // 测试稀疏图和稠密图
 let size = 10;
@@ -22,8 +23,13 @@ readGraph(sparseGraph);
 // denseGraph.printGraph();
 // console.log();
 // sparseGraph.printGraph();
-denseGraph.printGraph();
-let component = new Component(denseGraph);
+// denseGraph.printGraph();
+// let component = new Component(denseGraph);
 
 // console.log(component.getComponentCount());
-console.log(component.isConnected(8, 1))
+// console.log(component.isConnected(8, 1))
+
+let path = new Path(denseGraph, 1);
+// console.log(path.hasPath(2));
+// console.log(path.path(2));
+path.showPath(3);
