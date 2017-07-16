@@ -1,4 +1,4 @@
-const Queue = require('./Queue');
+const Queue = require('../data-structure/Queue');
 
 class BST {
 
