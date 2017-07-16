@@ -17,6 +17,7 @@ class DenseGraph {
         this.m = 0; // m 表示图中边的个数
         this.directed = directed; // directed 表示该图是有向还是无向图
         this.graph = new Array();
+        this.AdjIterator = AdjIterator;
         // 初始化数组让数组的每一个元素都为0， 表示所有的点都不相连
         for(let i = 0; i < n; i++) {
             this.graph.push(new Array(n).fill(0));
@@ -44,7 +45,7 @@ class DenseGraph {
 
         this.graph[v][w] = 1;
 
-        if(this.directed) {
+        if(!this.directed) {
             this.graph[w][v] = 1;
         }
 
@@ -54,7 +55,7 @@ class DenseGraph {
     printGraph() {
         for(let i = 0; i < this.n; i++) {
             let str = `${ i } : `;
-            let iterator = new DenseGraph.AdjIterator(this, i);
+            let iterator = new AdjIterator(this, i);
 
             for(let j = iterator.begin(); !iterator.end(); j = iterator.next()) {
                 str += `${ j } `

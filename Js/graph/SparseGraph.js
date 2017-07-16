@@ -12,6 +12,7 @@ class SparseGraph {
         this.m = 0;
         this.directed = directed;
         this.graph = new Array();
+        this.AdjIterator = AdjIterator;
 
         for(let i = 0; i < n; i++) {
             this.graph.push(new Array());
@@ -30,7 +31,7 @@ class SparseGraph {
     addEdge(v, w) {
         this.graph[v].push(w);
 
-        if(this.directed) {
+        if(!this.directed) {
             this.graph[w].push(v);
         }
 
@@ -50,7 +51,7 @@ class SparseGraph {
     printGraph() {
         for(let i = 0; i < this.n; i++) {
             let str = `${ i } : `;
-            let iterator = new SparseGraph.AdjIterator(this, i);
+            let iterator = new AdjIterator(this, i);
 
             for(let j = iterator.begin(); !iterator.end(); j = iterator.next()) {
                 str += `${ j } `

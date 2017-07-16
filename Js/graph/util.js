@@ -1,3 +1,5 @@
+const graphData = require("./graph");
+
 const generateEdges = (start, end, size) => {
 
     let edges = new Array();
@@ -12,7 +14,16 @@ const generateEdges = (start, end, size) => {
     return edges;
 }
 
+const readGraph = graph => {
+    // 将文件的图读进graph中
+    let data = graphData.data;
+
+    for(let d of data) {
+        graph.addEdge(d[0], d[1]);
+    }
+}
 
 module.exports = {
-    generateEdges
+    generateEdges,
+    readGraph
 }
