@@ -1,6 +1,8 @@
 const DenseGraph = require("./DenseGraph");
 const SparseGraph = require("./SparseGraph");
-const { generateEdges, readGraph } = require("./util");
+const WeightedDenseGraph = require("./WeightedDenseGraph");
+const WeightedSparseGraph = require("./WeightedSparseGraph");
+const { generateEdges, readUnweightedGraph, readWeightedGraph } = require("./util");
 const Component = require("./Component");
 const Path = require("./Path");
 const ShortestPath = require("./ShortestPath");
@@ -18,8 +20,8 @@ let sparseGraph = new SparseGraph(size, false);
 //     sparseGraph.addEdge(edge.v, edge.w);
 // }
 
-readGraph(denseGraph);
-readGraph(sparseGraph);
+readUnweightedGraph(denseGraph);
+readUnweightedGraph(sparseGraph);
 
 // denseGraph.printGraph();
 // console.log();
@@ -35,5 +37,18 @@ readGraph(sparseGraph);
 // console.log(path.path(2));
 // path.showPath(3);
 
-let shortestPath = new ShortestPath(denseGraph, 1);
-shortestPath.showPath(8);
+// let shortestPath = new ShortestPath(denseGraph, 1);
+// shortestPath.showPath(8);
+
+
+let weightedDenseGraph = new WeightedDenseGraph(10, false);
+let weightedSparseGraph = new WeightedSparseGraph(10, false);
+
+readWeightedGraph(weightedDenseGraph);
+readWeightedGraph(weightedSparseGraph);
+
+// weightedDenseGraph.printGraph();
+// console.log(weightedDenseGraph.E())
+
+weightedSparseGraph.printGraph();
+console.log(weightedSparseGraph.E());

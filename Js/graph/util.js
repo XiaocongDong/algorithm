@@ -1,4 +1,4 @@
-const graphData = require("./graph");
+const { unWeightedGraph, weightedGraph } = require("./graph");
 
 const generateEdges = (start, end, size) => {
 
@@ -14,16 +14,25 @@ const generateEdges = (start, end, size) => {
     return edges;
 }
 
-const readGraph = graph => {
+const readUnweightedGraph = graph => {
     // 将文件的图读进graph中
-    let data = graphData.data;
+    let data = unWeightedGraph.data;
 
     for(let d of data) {
         graph.addEdge(d[0], d[1]);
     }
 }
 
+const readWeightedGraph = graph => {
+    let data = weightedGraph.data;
+
+    for(let d of data) {
+        graph.addEdge(d[0], d[1], d[2]);
+    }
+}
+
 module.exports = {
     generateEdges,
-    readGraph
+    readUnweightedGraph,
+    readWeightedGraph
 }
