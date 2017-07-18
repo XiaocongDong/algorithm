@@ -21,7 +21,7 @@ class Edge {
 
     other(v) {
         // 返回另外一个顶点
-        return v === this.v? this.v: (v === this.w? this.w: null);
+        return v === this.v? this.w: (v === this.w? this.v: null);
     }
 }
 

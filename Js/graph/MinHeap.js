@@ -69,12 +69,4 @@ class MinHeap {
     }
 }
 
-edges = [
-    new Edge(0, 1, 10),
-    new Edge(1, 2, 4),
-    new Edge(3, 4, 9),
-    new Edge(4, 5, 8),
-    new Edge(2, 3, 90)
-]
-
 module.exports = MinHeap;
