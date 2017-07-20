@@ -22,8 +22,8 @@ class IndexMinHeap {
         // 初始化indexes和reverse两个数组
         for(let i = 0; i < this.indexes.length; i++) {
             // 0 表示该索引什么数据也不指向，因为原来数组里面一个数据也没有
-            this.indexes[0] = 0;
-            this.reverse[0] = 0;
+            this.indexes[i] = 0;
+            this.reverse[i] = 0;
         }
     }
 
@@ -87,6 +87,8 @@ class IndexMinHeap {
         this.indexes[1] = this.indexes[this.count];
         // 将最后一个索引指向0， 表示该索引指向无效数据
         this.indexes[this.count] = 0;
+        this.reverse[this.indexes[1]] = 1;
+        
         this.count--;
 
         if(this.count === 0) {
@@ -128,7 +130,7 @@ class IndexMinHeap {
         if(this.count === 0) 
             return undefined;
         
-        return this.indexes[1];
+        return this.indexes[1] - 1;
     }
 
     isEmpty() {
@@ -166,10 +168,10 @@ class IndexMinHeap {
 
 let indexMinHeap = new IndexMinHeap(10);
 
-// indexMinHeap.insert(0, {weight: 10});
-// indexMinHeap.insert(1, {weight: 20});
-// indexMinHeap.insert(9, {weight: 5});
-// indexMinHeap.insert(7, {weight: 40});
+indexMinHeap.insert(0, {weight: 10});
+indexMinHeap.insert(1, {weight: 20});
+indexMinHeap.insert(9, {weight: 5});
+indexMinHeap.insert(7, {weight: 40});
 // indexMinHeap.update(1, {weight: 1});
 // console.log(indexMinHeap.datas);
 // console.log(indexMinHeap.indexes);
@@ -184,6 +186,7 @@ let indexMinHeap = new IndexMinHeap(10);
 // console.log(indexMinHeap.contain(0));
 // console.log(indexMinHeap.contain(1));
 // console.log(indexMinHeap.contain(7));
-
+// console.log(indexMinHeap.contain(5));
+// console.log(indexMinHeap.getItem(9));
 
 module.exports = IndexMinHeap;

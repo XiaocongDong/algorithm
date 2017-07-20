@@ -7,6 +7,7 @@ const Component = require("./Component");
 const Path = require("./Path");
 const ShortestPath = require("./ShortestPath");
 const LazyPrimMST = require("./LazyPrimMST");
+const PrimMST = require("./PrimMST");
 
 // 测试稀疏图和稠密图
 let size = 10;
@@ -54,5 +55,8 @@ readWeightedGraph(weightedSparseGraph);
 // weightedSparseGraph.printGraph();
 // console.log(weightedSparseGraph.E());
 
-let lazyPrimMST = new LazyPrimMST(weightedDenseGraph);
-lazyPrimMST.printMST();
+// let lazyPrimMST = new LazyPrimMST(weightedDenseGraph);
+// lazyPrimMST.printMST();
+
+let primMST = new PrimMST(weightedDenseGraph);
+primMST.printMST();
